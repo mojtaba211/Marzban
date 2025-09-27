@@ -73,11 +73,13 @@ def get_validated_sub(
         raise HTTPException(status_code=404, detail="Not Found")
 
     dbuser = crud.get_user(db, sub['username'])
-    if not dbuser or dbuser.created_at > sub['created_at']:
-        raise HTTPException(status_code=404, detail="Not Found")
 
-    if dbuser.sub_revoked_at and dbuser.sub_revoked_at > sub['created_at']:
-        raise HTTPException(status_code=404, detail="Not Found")
+    #fixed subscription link based on username only
+    #if not dbuser or dbuser.created_at > sub['created_at']:
+    #    raise HTTPException(status_code=404, detail="Not Found")
+
+    #if dbuser.sub_revoked_at and dbuser.sub_revoked_at > sub['created_at']:
+    #    raise HTTPException(status_code=404, detail="Not Found")
 
     return dbuser
 
