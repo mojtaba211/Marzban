@@ -72,7 +72,7 @@ def get_subscription_payload(token: str) -> Union[dict, None]:
             if len(token) != 36:
                 return
             else:
-                return token
+                return {"username": token}
             # u_token = token[:-10]
             # u_signature = token[-10:]
             # try:
