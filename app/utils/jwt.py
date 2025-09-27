@@ -69,22 +69,26 @@ def get_subscription_payload(token: str) -> Union[dict, None]:
             else:
                 return
         else:
-            u_token = token[:-10]
-            u_signature = token[-10:]
-            try:
-                u_token_dec = b64decode(
-                    (u_token.encode('utf-8') + b'=' * (-len(u_token.encode('utf-8')) % 4)),
-                    altchars=b'-_', validate=True)
-                u_token_dec_str = u_token_dec.decode('utf-8')
-            except:
+            if len(token) != 36:
                 return
-            u_token_resign = b64encode(sha256((u_token+get_secret_key()).encode('utf-8')
-                                              ).digest(), altchars=b'-_').decode('utf-8')[:10]
-            if u_signature == u_token_resign:
-                u_username = u_token_dec_str.split(',')[0]
-                u_created_at = int(u_token_dec_str.split(',')[1])
-                return {"username": u_username, "created_at": datetime.utcfromtimestamp(u_created_at)}
             else:
-                return
+                return token
+            # u_token = token[:-10]
+            # u_signature = token[-10:]
+            # try:
+            #     u_token_dec = b64decode(
+            #         (u_token.encode('utf-8') + b'=' * (-len(u_token.encode('utf-8')) % 4)),
+            #         altchars=b'-_', validate=True)
+            #     u_token_dec_str = u_token_dec.decode('utf-8')
+            # except:
+            #     return
+            # u_token_resign = b64encode(sha256((u_token+get_secret_key()).encode('utf-8')
+            #                                   ).digest(), altchars=b'-_').decode('utf-8')[:10]
+            # if u_signature == u_token_resign:
+            #     u_username = u_token_dec_str.split(',')[0]
+            #     u_created_at = int(u_token_dec_str.split(',')[1])
+            #     return {"username": u_username, "created_at": datetime.utcfromtimestamp(u_created_at)}
+            # else:
+            #     return
     except jwt.exceptions.PyJWTError:
         return
