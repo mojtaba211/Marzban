@@ -85,11 +85,11 @@ NOTIFY_IF_DATA_USAGE_PERCENT_REACHED = config("NOTIFY_IF_DATA_USAGE_PERCENT_REAC
 NOTIFY_IF_DAYS_LEFT_REACHED = config("NOTIFY_IF_DAYS_LEFT_REACHED", default=True, cast=bool)
 NOTIFY_LOGIN = config("NOTIFY_LOGIN", default=True, cast=bool)
 
-ACTIVE_STATUS_TEXT = config("ACTIVE_STATUS_TEXT", default="Active")
-EXPIRED_STATUS_TEXT = config("EXPIRED_STATUS_TEXT", default="Expired")
-LIMITED_STATUS_TEXT = config("LIMITED_STATUS_TEXT", default="Limited")
-DISABLED_STATUS_TEXT = config("DISABLED_STATUS_TEXT", default="Disabled")
-ONHOLD_STATUS_TEXT = config("ONHOLD_STATUS_TEXT", default="On-Hold")
+ACTIVE_STATUS_TEXT = config("ACTIVE_STATUS_TEXT", default="فعال")
+EXPIRED_STATUS_TEXT = config("EXPIRED_STATUS_TEXT", default="مهلت ندارد")
+LIMITED_STATUS_TEXT = config("LIMITED_STATUS_TEXT", default="حجم ندارد")
+DISABLED_STATUS_TEXT = config("DISABLED_STATUS_TEXT", default="غیرفعال")
+ONHOLD_STATUS_TEXT = config("ONHOLD_STATUS_TEXT", default="درانتظار")
 
 USERS_AUTODELETE_DAYS = config("USERS_AUTODELETE_DAYS", default=-1, cast=int)
 USER_AUTODELETE_INCLUDE_LIMITED_ACCOUNTS = config("USER_AUTODELETE_INCLUDE_LIMITED_ACCOUNTS", default=False, cast=bool)
